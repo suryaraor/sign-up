@@ -3,14 +3,17 @@
 
 function doGet(e) {
   const sheetId = e.parameter.sheetId;
-  const action = e.parameter.action;
+  const action = String(e.parameter.action || '').trim();
   const callback = e.parameter.callback;
   const sheetName = e.parameter.sheetName || 'material';
 
   try {
-    let result = { success: false, error: 'Unknown action' };
+    let result = {
+      success: false,
+      error: 'Missing action. Use one of: getMaterials, createMaterial, signupMaterial, updateMaterialStatus, releaseMaterial'
+    };
 
-    if (action === 'getMaterials') {
+    if (action === 'getMaterials' || action === 'getParticipants') {
       result = getMaterials(sheetId, sheetName);
     } else if (action === 'createMaterial') {
       result = createMaterial(sheetId, sheetName, e.parameter.item, e.parameter.location, e.parameter.createdBy);
@@ -27,6 +30,16 @@ function doGet(e) {
       );
     } else if (action === 'releaseMaterial') {
       result = releaseMaterial(sheetId, sheetName, Number(e.parameter.rowIndex), e.parameter.volunteer);
+    } else if (action === 'checkIn') {
+      result = {
+        success: false,
+        error: 'Action checkIn is from the old check-in app. Use signupMaterial/updateMaterialStatus/releaseMaterial for material workflow.'
+      };
+    } else if (action) {
+      result = {
+        success: false,
+        error: `Unknown action '${action}'. Allowed: getMaterials, createMaterial, signupMaterial, updateMaterialStatus, releaseMaterial`
+      };
     }
 
     return asResponse(result, callback);

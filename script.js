@@ -1,9 +1,10 @@
 // Configuration
 const LEGACY_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyhwIdqNKoconoY2MhM6YJWb6ZSJvBhbLMOlHyQEXet5AocCmwGF9GZOlrsGLpKbKwPLA/exec';
-const DEFAULT_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyf2Uj1h_4piNgHzOzlTDmqgImP-J4HwIhRwL6RuQD4VJqHdAqAvhUxrp8Jzg1pkwjo/exec';
+const PREVIOUS_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyf2Uj1h_4piNgHzOzlTDmqgImP-J4HwIhRwL6RuQD4VJqHdAqAvhUxrp8Jzg1pkwjo/exec';
+const DEFAULT_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1qlmlAGnqmMOn9UVmX42Z5thkY0oMnILYrvRlVLybYAhMzYt45piOVwqy0vaqinWzDA/exec';
 
 let storedAppsScriptUrl = localStorage.getItem('walkathon_appsScriptUrl') || '';
-if (storedAppsScriptUrl === LEGACY_APPS_SCRIPT_URL) {
+if (storedAppsScriptUrl === LEGACY_APPS_SCRIPT_URL || storedAppsScriptUrl === PREVIOUS_APPS_SCRIPT_URL) {
     storedAppsScriptUrl = DEFAULT_APPS_SCRIPT_URL;
     localStorage.setItem('walkathon_appsScriptUrl', storedAppsScriptUrl);
 }

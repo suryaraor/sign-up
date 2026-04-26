@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Sign-up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Count -->
+        <div class="header">
+            <h1>Material Sign-up</h1>
+            <div class="count-box">
+                <div class="count-label">Claimed Items</div>
+                <div class="count-number" id="claimedCount">0</div>
+                <div class="count-label">of <span id="totalCount">0</span></div>
+            </div>
+        </div>
+
+        <!-- Search and Create Section -->
+        <div class="search-section">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search by item, volunteer, or location..."
+                class="search-input"
+                autocomplete="off"
+            >
+            <div class="search-info" id="searchInfo"></div>
+
+            <div class="create-form" id="createForm">
+                <input type="text" id="itemInput" placeholder="New material item (e.g. clipboards)" class="search-input create-input" autocomplete="off">
+                <input type="text" id="locationInput" placeholder="Location (e.g. Check-In desk)" class="search-input create-input" autocomplete="off">
+                <button id="createItemBtn" class="btn-primary">Create Item</button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+            <div id="resultsList" class="results-list"></div>
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No materials found. Try searching again or create a new item.</p>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="loading" style="display: none;">
+            <p>Loading data...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+        <!-- Setup Instructions (hidden by default) -->
+        <div id="setupInstructions" class="setup-instructions" style="display: none;">
+        </div>
+    </div>
+
+    <div id="nameModal" class="name-modal" style="display: none;">
+        <div class="name-modal-card">
+            <h2>Welcome</h2>
+            <p>Please enter your name to sign up materials.</p>
+            <input type="text" id="userNameInput" class="search-input" placeholder="Your name" autocomplete="name">
+            <button id="saveNameBtn" class="btn-primary">Continue</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
